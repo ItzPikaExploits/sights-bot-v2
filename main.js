@@ -5,11 +5,7 @@ const client = new Client({
 client.commands = new Collection();
 client.aliases = new Collection();
 client.xp = require("./storage/xp.json");
-const config = {
-    "PREFIX": "s!",
-    "TOKEN": "NjIxMTMwODI5MzI1Nzk1MzQ4.XXg3xw.iu6hrFmkeCOgars-lmkR5GVYyyM"
-};
-const prefix = config.PREFIX;
+const prefix = process.env.PREFIX;
 ["command"].forEach(handler => {
     require(`./handler/${handler}`)(client);
 });
@@ -157,4 +153,4 @@ client.on("message", async message => {
         command.run(client, message, args)
 });
 
-client.login(config.TOKEN);
+client.login(process.env.TOKEN);
