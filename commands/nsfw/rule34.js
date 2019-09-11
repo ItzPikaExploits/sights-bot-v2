@@ -9,6 +9,7 @@ module.exports = {
     description: "Returns an image from www.rule34.xxx",
     usage: "<tags>",
     run: async (client, message, args) => {
+        if (message.deletable) message.delete();
         editedmessage = args.slice(0).join(" ")
         var url = 'https://rule34.xxx/index.php?page=dapi&s=post&q=index&tags=' + editedmessage;
         https.get(url, function(res){

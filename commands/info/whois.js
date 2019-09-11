@@ -8,6 +8,7 @@ module.exports = {
     description: "Returns information about a user.",
     usage: "<username | id | mention>",
     run: async (client, message, args) => {
+        const xp = require("../../storage/xp.json");
         const member = getMember(message, args.join(" "));
         const joined = formatDate(member.joinedAt);
         const roles = member.roles
@@ -21,7 +22,9 @@ module.exports = {
             .setColor(member.displayHexColor === "#000000" ? "#ffffff" : member.displayHexColor)
             .addField("Member information", stripIndents`**> Display name:** ${member.displayName}
             **> Joined at:** ${joined}
-            **> Roles:** ${roles}`, true)
+            **> Roles:** ${roles}
+            **> Level:** ${xp[member.id].level}
+            **> EXP:** ${xp[member.id].xp}/${xp[member.id].level * 600}`, true)
             .addField("User information", stripIndents`**> ID:** ${member.user.id}
             **> Username:** ${member.user.username}
             **> Discord Tag:** ${member.user.tag}
