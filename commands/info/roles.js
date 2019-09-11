@@ -1,3 +1,4 @@
+const { RichEmbed } = require("discord.js");
 module.exports = {
     name: "roles",
     aliases: ["rolelist"],
@@ -8,7 +9,7 @@ module.exports = {
         await message.delete().catch(err=>{});
         let A = message.guild.roles.get("620798195575816197");
         const filter = (reaction, user) => ["🎉"].includes(reaction.emoji.name) && user.id === message.author.id;
-        let embed = new discord.RichEmbed()
+        let embed = new RichEmbed()
             .setColor("LUMINOUS_VIVID_PINK")
             .setTitle(`Available Roles`)
             .setFooter(`
