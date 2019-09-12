@@ -1,4 +1,5 @@
-const request = require("request");
+const xml2js = require('xml2js');
+const https = require("https");
 module.exports = {
     name: "e621",
     aliases: ["e6"],
