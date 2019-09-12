@@ -44,7 +44,7 @@ module.exports = {
                 if (typeof (estoThing[0]) != "undefined") {
                     let embed = new RichEmbed()
                         .setColor("LUMINOUS_VIVID_PINK")
-                        .setTitle("E621: " + editedmessage)
+                        .setTitle("E621: " + params)
                         .setFooter(estoThing[0].file_url.toString())
                         .setImage("https://e621.net/post/show/" + estoThing[0].id.toString())
                         .setDescription("Enjoy~!")
