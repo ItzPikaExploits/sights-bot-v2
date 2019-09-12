@@ -19,13 +19,13 @@ module.exports = {
 
         tagesto = tagestosplit.join("+");
 
-        if (msg.channel.type === "dm" || msg.channel.name.indexOf("the_art_gallery") != -1 || msg.channel.name.indexOf("furry") != -1 || msg.channel.name.indexOf("2am") != -1 || msg.channel.name.indexOf("nsfw") != -1) {
+        if (message.channel.type === "dm" || message.channel.name.indexOf("the_art_gallery") != -1 || message.channel.name.indexOf("furry") != -1 || message.channel.name.indexOf("2am") != -1 || message.channel.name.indexOf("nsfw") != -1) {
             console.log("Safe to post NSFW content.");
         }
         else {
             tagesto += "+rating:safe";
             if ((tagesto.indexOf("rating:explicit") != -1) || (tagesto.indexOf("penis") != -1) || (tagesto.indexOf("pussy") != -1) || (tagesto.indexOf("anus") != -1) || (tagesto.indexOf("dick") != -1) || tagesto.indexOf("rating:questionable") != -1 || tagesto.indexOf("genitalia") != -1 || tagesto.indexOf("genitals") != -1 || tagesto.indexOf("genital") != -1 || tagesto.indexOf("vagina") != -1 || tagesto.indexOf("cunt") != -1 || tagesto.indexOf("vaginal") != -1 || tagesto.indexOf("vaginal_penetration") != -1 || tagesto.indexOf("sex") != -1 || tagesto.indexOf("fuck") != -1 || tagesto.indexOf("intercourse") != -1 || tagesto.indexOf("cock") != -1) {
-                msg.channel.send("That content isn't appropiate for this channel. Go be naughty elsewhere.", {files:[{attachment: __dirname + bruh.jpg}]});
+                message.channel.send("That content isn't appropiate for this channel. Go be naughty elsewhere.", {files:[{attachment: __dirname + bruh.jpg}]});
                 return;
             }
         }
@@ -51,7 +51,7 @@ module.exports = {
                     message.channel.send(embed)
                 }
                 else {
-                    msg.channel.send("No images found. Try different tags.")
+                    message.channel.send("No images found. Try different tags.")
                 }
             }
             else {
