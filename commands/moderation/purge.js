@@ -11,11 +11,15 @@ module.exports = {
             return message.reply("you do not have the MANAGE_MESSAGES permission!").then(m => m.delete(5000));
         if (!args[0]) 
             return message.reply("how much do you want us to delete?").then(m => m.delete(5000));
-        let msgAmount = Number(args[0]);
-        if (msgAmount === NaN) 
-            return message.reply("that is not a valid number!").then(m => m.delete(5000));
-        msgAmount = Math.round(msgAmount);
-        msgAmount.channel.bulkDelete(msgAmount)
-            .catch(err => console.log(err));
+        if (isNaN(args[0]))
+            return message.reply("supply a valid amount of messages to purge.").then(m => m.delete(5000));
+        if (args[0] > 100)
+            return message.reply("supply a valid amount of messages below 100 to purge.").then(m => m.delete(5000));
+        message.channel.bulkDelete(args[0])
+            .then(messages => message.channel.send("Successfully purged the given amount! ✅").then(m => m.delete(5000)))
+            .catch(error => {
+                console.log(error);
+                message.channel.send("An error has been caught while trying to complete this action! ❌");
+            });
     }
 };
