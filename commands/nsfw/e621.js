@@ -1,17 +1,14 @@
-const { RichEmbed } = require("discord.js");
-const xml2js = require('xml2js');
-const https = require("https");
-
+const request = require("request");
 module.exports = {
-    name: "rule34",
-    aliases: ["r34"],
+    name: "e621",
+    aliases: ["e6"],
     category: "nsfw",
-    description: "Returns an image from Rule34",
+    description: "Returns an image from E621",
     usage: "<tags>",
     run: async (client, message, args) => {
         if (message.deletable) message.delete();
         editedmessage = args.slice(0).join(" ")
-        var url = 'https://rule34.xxx/index.php?page=dapi&s=post&q=index&tags=' + editedmessage;
+        var url = 'https://e621.net/post/index.json?tags=order:random+' + editedmessage;
         https.get(url, function(res){
             var body = '';
             res.on('data', function(chunk){
@@ -27,12 +24,12 @@ module.exports = {
                     }
                     if(postCount > 0) {
                         var picNum = Math.floor(Math.random() * postCount) + 0;
-                        var r34Pic = result.posts.post[picNum].$.file_url;
+                        var e6Pic = result.posts.post[picNum].$.file_url;
                         let embed = new RichEmbed()
                             .setColor("LUMINOUS_VIVID_PINK")
-                            .setTitle("Rule34: " + editedmessage)
-                            .setFooter(r34Pic)
-                            .setImage(r34Pic)
+                            .setTitle("E621: " + editedmessage)
+                            .setFooter(e6Pic)
+                            .setImage(e6Pic)
                             .setDescription("Enjoy~!")
                             .setTimestamp()
                         message.channel.send(embed)
