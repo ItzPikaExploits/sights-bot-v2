@@ -8,16 +8,19 @@ module.exports = {
     run: async (client, message, args) => {
         await message.delete().catch(err=>{});
         let A = message.guild.roles.get("620798195575816197");
-        const filter = (reaction, user) => ["🎉"].includes(reaction.emoji.name) && user.id === message.author.id;
+        let B = message.guild.roles.get("622544512035848226");
+        const filter = (reaction, user) => ["🎉", "📚"].includes(reaction.emoji.name) && user.id === message.author.id;
         let embed = new RichEmbed()
             .setColor("LUMINOUS_VIVID_PINK")
             .setTitle(`Available Roles`)
             .setFooter(`
             🎉 - ${A.toString()}
+            📚 - ${B.toString()}
             `)
             .setDescription(`Reaction roles for <@${message.author.id}>`)
         message.channel.send(embed).then(async msg => {
             await msg.react("🎉");
+            await msg.react("📚");
             msg.awaitReactions(filter, {
                 max: 1,
                 time: 30 * 1000,
@@ -31,6 +34,14 @@ module.exports = {
                             return message.channel.send(`${message.author.username}, an error has appeared while trying to give you a role: **${err.Message}**.`)
                         });
                         message.channel.send(`${message.author.username}, you have received the role, **${A.name}**.`).then(m => m.delete(3000))
+                        msg.delete();
+                        break;
+                    case "📚":
+                        message.member.addRole(B).catch(err => {
+                            console.log(err);
+                            return message.channel.send(`${message.author.username}, an error has appeared while trying to give you a role: **${err.Message}**.`)
+                        });
+                        message.channel.send(`${message.author.username}, you have received the role, **${B.name}**.`).then(m => m.delete(3000))
                         msg.delete();
                         break;
                 }
