@@ -1,4 +1,4 @@
-const { getMember, formatDate } = require("../../functions.js");
+const { formatDate } = require("../../functions.js");
 const { RichEmbed } = require("discord.js");
 const { stripIndents } = require("common-tags");
 module.exports = {
