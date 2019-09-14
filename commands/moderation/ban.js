@@ -1,4 +1,4 @@
-const { getMember } = require("../../functions.js");
+const { getMember, formatDate } = require("../../functions.js");
 const { RichEmbed } = require("discord.js");
 const { stripIndents } = require("common-tags");
 module.exports = {
@@ -18,6 +18,7 @@ module.exports = {
         if (bMember.hasPermission("ADMINISTRATOR"))
             return message.reply("I could not ban this user, they are a (moder/administr)ator!").then(m => m.delete(5000));
         let bReason = args.join(" ").slice(22);
+        const created = formatDate(bMember.user.createdAt);
         const banEmbed = new RichEmbed()
             .setFooter(bMember.displayName, bMember.user.displayAvatarURL)
             .setThumbnail(bMember.user.displayAvatarURL)

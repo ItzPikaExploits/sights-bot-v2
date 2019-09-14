@@ -1,4 +1,4 @@
-const { getMember } = require("../../functions.js");
+const { getMember, formatDate } = require("../../functions.js");
 const { RichEmbed } = require("discord.js");
 const { stripIndents } = require("common-tags");
 module.exports = {
@@ -18,6 +18,7 @@ module.exports = {
         if (kMember.hasPermission("ADMINISTRATOR"))
             return message.reply("I could not kick this user, they are a (moder/administr)ator!").then(m => m.delete(5000));
         let kReason = args.join(" ").slice(22);
+        const created = formatDate(kMember.user.createdAt);
         const kickEmbed = new RichEmbed()
             .setFooter(kMember.displayName, kMember.user.displayAvatarURL)
             .setThumbnail(kMember.user.displayAvatarURL)
