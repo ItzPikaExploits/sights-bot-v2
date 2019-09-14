@@ -9,6 +9,7 @@ module.exports = {
     description: "Temporarily mute a user!",
     usage: "<username>",
     run: async (client, message, args) => {
+        if (message.deletable) message.delete();
         if (message.channel.type == "dm") return;
         if (!message.member.hasPermission("ADMINISTRATOR")) 
             return message.reply("you do not have the ADMINISTRATOR permission!").then(m => m.delete(5000));
