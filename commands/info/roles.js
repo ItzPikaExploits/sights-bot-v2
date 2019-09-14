@@ -13,11 +13,13 @@ module.exports = {
         let embed = new RichEmbed()
             .setColor("LUMINOUS_VIVID_PINK")
             .setTitle(`Available Roles`)
-            .setFooter(`
+            .setDescription(`
+
             🎉 - ${A.toString()}
             📚 - ${B.toString()}
+
             `)
-            .setDescription(`Reaction roles for <@${message.author.id}>`)
+            .setFooter(`Reaction roles for <@${message.author.id}>`)
         message.channel.send(embed).then(async msg => {
             await msg.react("🎉");
             await msg.react("📚");
