@@ -73,6 +73,6 @@ module.exports = {
                 **> Created at:** ${created}`, true)
                 .setTimestamp()
             punishChannel.send(unmuteEmbed);
-        }, ts(muteTime));
+        }, ts(muteTime) * 1000);
     }
 };
