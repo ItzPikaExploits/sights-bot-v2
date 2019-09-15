@@ -1,7 +1,7 @@
 const { formatDate } = require("../../functions.js");
 const { RichEmbed } = require("discord.js");
 const { stripIndents } = require("common-tags");
-const ms = require("ms");
+const ts = require("timestring");
 module.exports = {
     name: "tempmute",
     aliases: ["mute"],
@@ -47,7 +47,7 @@ module.exports = {
             .setColor("#ff0000")
             .addField("Member information", stripIndents`**> Display name:** ${mMember.displayName} (${mMember.id})
             **> Muted by:** ${message.author.username} (${message.member.id})
-            **> Muted for:** ${ms(ms(muteTime))}`)
+            **> Muted for:** ${muteTime}`)
             .addField("User information", stripIndents`**> ID:** ${mMember.user.id}
             **> Username:** ${mMember.user.username}
             **> Discord Tag:** ${mMember.user.tag}
@@ -66,13 +66,13 @@ module.exports = {
                 .setColor("#00ff00")
                 .addField("Member information", stripIndents`**> Display name:** ${mMember.displayName} (${mMember.id})
                 **> Muted by:** ${message.author.username} (${message.member.id})
-                **> Muted for:** ${ms(ms(muteTime))}`)
+                **> Muted for:** ${muteTime}`)
                 .addField("User information", stripIndents`**> ID:** ${mMember.user.id}
                 **> Username:** ${mMember.user.username}
                 **> Discord Tag:** ${mMember.user.tag}
                 **> Created at:** ${created}`, true)
                 .setTimestamp()
             punishChannel.send(unmuteEmbed);
-        }, ms(muteTime));
+        }, ts(muteTime));
     }
 };
