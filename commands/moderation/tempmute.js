@@ -29,7 +29,7 @@ module.exports = {
                         SEND_MESSAGES = false,
                         ADD_REACTIONS = false
                     ],
-                    position: vipROLE.position + 1
+                    position: vipROLE.position
                 });
                 //message.guild.channels.forEach(async (channel, id) => {
                 //    await channel.overwritePermissions(ROLE, {
