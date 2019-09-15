@@ -18,13 +18,15 @@ module.exports = {
             return message.reply("I could not find that user!").then(m => m.delete(5000));
         if (mMember.hasPermission("ADMINISTRATOR"))
             return message.reply("I could not mute this user, they are a (moder/administr)ator!").then(m => m.delete(5000));
-        let ROLE = message.guild.roles.find("name", "🔇 Muted 🔇")
+        let ROLE = message.guild.roles.find(x => x.name === "🔇 Muted 🔇");
+        let vipROLE = message.guild.roles.find(x => x.name === "👑 VIP 👑")
         if (!ROLE) {
             try {
                 ROLE = await message.guild.createRole({
                     name: "🔇 Muted 🔇",
                     color: "#4b89ff",
-                    permissions: []
+                    permissions: [],
+                    position: vipROLE.position + 1
                 });
                 message.guild.channels.forEach(async (channel, id) => {
                     await channel.overwritePermissions(ROLE, {

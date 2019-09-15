@@ -14,7 +14,7 @@ client.on("ready", () => {
     client.user.setPresence({
         status: "online",
         game: {
-            name: "over many servers!",
+            name: "ABOVE the world!",
             type: "WATCHING"
         }
     });
