@@ -19,28 +19,7 @@ module.exports = {
         if (mMember.hasPermission("ADMINISTRATOR"))
             return message.reply("I could not mute this user, they are a (moder/administr)ator!").then(m => m.delete(5000));
         let ROLE = message.guild.roles.find(x => x.name === "🔇 Muted 🔇");
-        let vipROLE = message.guild.roles.find(x => x.name === "👑 VIP 👑");
-        if (!ROLE) {
-            try {
-                ROLE = await message.guild.createRole({
-                    name: "🔇 Muted 🔇",
-                    color: "#4b89ff",
-                    permissions: [
-                        SEND_MESSAGES = false,
-                        ADD_REACTIONS = false
-                    ],
-                    position: vipROLE.position
-                });
-                //message.guild.channels.forEach(async (channel, id) => {
-                //    await channel.overwritePermissions(ROLE, {
-                //        SEND_MESSAGES: false,
-                //        ADD_REACTIONS: false
-                //    });
-                //});
-            } catch(e) {
-                console.log(e.stack);
-            }
-        };
+        if (!ROLE) return message.reply("I could not find the 🔇 Muted 🔇 role!").then(m => m.delete(5000));
         let muteTime = args[1];
         if (!muteTime) return message.reply("a time was not specified!");
         const created = formatDate(mMember.user.createdAt);
