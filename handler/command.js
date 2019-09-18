@@ -9,9 +9,9 @@ module.exports = (client) => {
             client.commands.set(pull.name, pull);
             if (pull.name) {
                 client.commands.set(pull.name, pull);
-                table.addRow(file, "✅");
+                table.addRow(file, "owo");
             } else {
-                table.addRow(file, "❌ -> missing something?");
+                table.addRow(file, "uwu -> missing something?");
                 continue;
             };
             if (pull.aliases && Array.isArray(pull.aliases))
