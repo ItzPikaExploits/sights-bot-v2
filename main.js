@@ -14,7 +14,7 @@ client.on("ready", () => {
     client.user.setPresence({
         status: "online",
         game: {
-            name: "ABOVE the world!",
+            name: "ABOVE the world! || " + HEROKU_RELEASE_VERSION,
             type: "WATCHING"
         }
     });
