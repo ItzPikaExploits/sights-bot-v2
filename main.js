@@ -12,7 +12,7 @@ const prefix = process.env.PREFIX;
 client.on("guildMemberAdd", member => {
     let verifyChannel = member.guild.channels.find("id", "612359319588962335");
     if (!verifyChannel) return console.log("Where did the verify channel go?");
-    verifyChannel.send("Welcome to ABOVE - RBLX / MC! Make sure to read <#612359319589224458> + <#598716546902261761>");
+    verifyChannel.send(`Welcome to ABOVE - RBLX / MC, <@${member.id}>! Make sure to read <#612359319589224458> + <#598716546902261761>`);
 });
 client.on("ready", () => {
     console.log("SIGHTS is online!")
