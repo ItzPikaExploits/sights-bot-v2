@@ -9,12 +9,17 @@ const prefix = process.env.PREFIX;
 ["command"].forEach(handler => {
     require(`./handler/${handler}`)(client);
 });
+client.on("guildMemberAdd", member => {
+    let verifyChannel = member.guild.channels.find("id", "612359319588962335");
+    if (!verifyChannel) return console.log("Where did the verify channel go?");
+    verifyChannel.send("Welcome to ABOVE - RBLX / MC! Make sure to read <#612359319589224458> + <#598716546902261761>");
+});
 client.on("ready", () => {
     console.log("SIGHTS is online!")
     client.user.setPresence({
         status: "online",
         game: {
-            name: "ABOVE the world! || " + process.env.HEROKU_RELEASE_VERSION,
+            name: "over " + process.env.HEROKU_RELEASE_VERSION + "!",
             type: "WATCHING"
         }
     });
