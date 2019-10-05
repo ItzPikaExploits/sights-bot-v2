@@ -5,7 +5,7 @@ const client = new Client({
 });
 client.commands = new Collection();
 client.aliases = new Collection();
-client.categories = fs.readdirSync("./commands/")
+client.categories = fs.readdirSync("./commands/");
 client.xp = require("./storage/xp.json");
 const prefix = process.env.PREFIX;
 ["command"].forEach(handler => {
