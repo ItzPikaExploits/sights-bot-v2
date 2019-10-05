@@ -1,9 +1,11 @@
 const { Client, Collection } = require("discord.js");
+const fs = require("fs");
 const client = new Client({
     disableEveryone: true
 });
 client.commands = new Collection();
 client.aliases = new Collection();
+client.categories = fs.readdirSync("./commands/")
 client.xp = require("./storage/xp.json");
 const prefix = process.env.PREFIX;
 ["command"].forEach(handler => {
