@@ -10,6 +10,7 @@ module.exports = {
     usage: "<tags>",
     run: async (client, message, args) => {
         if (message.deletable) message.delete();
+        if (!message.channel.nsfw) return;
         params = args.slice(0).join(" ")
         var tagesto = "";
         var tagestosplit = params.split(",");
