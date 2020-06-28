@@ -10,6 +10,7 @@ module.exports = {
     usage: "<tags>",
     run: async (client, message, args) => {
         if (message.deletable) message.delete();
+        if (!message.channel.nsfw) return;
         editedmessage = args.slice(0).join(" ")
         var url = 'https://rule34.xxx/index.php?page=dapi&s=post&q=index&tags=' + editedmessage;
         https.get(url, function(res){
